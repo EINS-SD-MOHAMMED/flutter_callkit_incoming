@@ -11,75 +11,76 @@ import android.util.Log
 open class CallkitIncomingBroadcastReceiver : BroadcastReceiver() {
 
     companion object {
-        private const val TAG = "CallkitIncomingReceiver"
-        var silenceEvents = false
+    private const val TAG = "CallkitIncomingReceiver"
+    var silenceEvents = false
 
-        fun getIntent(context: Context, action: String, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                this.action = "${context.packageName}.${action}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
+    fun getIntent(context: Context, action: String, data: Bundle?) =
+        Intent("${context.packageName}.${action}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
 
-        fun getIntentIncoming(context: Context, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_INCOMING}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
+    fun getIntentIncoming(context: Context, data: Bundle?) =
+        Intent("${context.packageName}.${CallkitConstants.ACTION_CALL_INCOMING}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
 
-        fun getIntentStart(context: Context, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_START}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
+    fun getIntentStart(context: Context, data: Bundle?) =
+        Intent("${context.packageName}.${CallkitConstants.ACTION_CALL_START}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
 
-        fun getIntentAccept(context: Context, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_ACCEPT}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
+    fun getIntentAccept(context: Context, data: Bundle?) =
+        Intent("${context.packageName}.${CallkitConstants.ACTION_CALL_ACCEPT}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
 
-        fun getIntentDecline(context: Context, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_DECLINE}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
+    fun getIntentDecline(context: Context, data: Bundle?) =
+        Intent("${context.packageName}.${CallkitConstants.ACTION_CALL_DECLINE}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
 
-        fun getIntentEnded(context: Context, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_ENDED}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
+    fun getIntentEnded(context: Context, data: Bundle?) =
+        Intent("${context.packageName}.${CallkitConstants.ACTION_CALL_ENDED}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
 
-        fun getIntentTimeout(context: Context, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_TIMEOUT}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
+    fun getIntentTimeout(context: Context, data: Bundle?) =
+        Intent("${context.packageName}.${CallkitConstants.ACTION_CALL_TIMEOUT}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
 
-        fun getIntentCallback(context: Context, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_CALLBACK}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
+    fun getIntentCallback(context: Context, data: Bundle?) =
+        Intent("${context.packageName}.${CallkitConstants.ACTION_CALL_CALLBACK}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
 
-        fun getIntentHeldByCell(context: Context, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_HELD}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
+    fun getIntentHeldByCell(context: Context, data: Bundle?) =
+        Intent("${context.packageName}.${CallkitConstants.ACTION_CALL_HELD}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
 
-        fun getIntentUnHeldByCell(context: Context, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_UNHELD}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
+    fun getIntentUnHeldByCell(context: Context, data: Bundle?) =
+        Intent("${context.packageName}.${CallkitConstants.ACTION_CALL_UNHELD}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
 
-        fun getIntentConnected(context: Context, data: Bundle?) =
-            Intent(context, CallkitIncomingBroadcastReceiver::class.java).apply {
-                action = "${context.packageName}.${CallkitConstants.ACTION_CALL_CONNECTED}"
-                putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
-            }
-    }
+    fun getIntentConnected(context: Context, data: Bundle?) =
+        Intent("${context.packageName}.${CallkitConstants.ACTION_CALL_CONNECTED}").apply {
+            setPackage(context.packageName)
+            putExtra(CallkitConstants.EXTRA_CALLKIT_INCOMING_DATA, data)
+        }
+}
+
 
     // Get notification manager dynamically to handle plugin lifecycle properly
     private fun getCallkitNotificationManager(): CallkitNotificationManager? {
