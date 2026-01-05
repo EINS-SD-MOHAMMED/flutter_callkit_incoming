@@ -8,7 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 
-class CallkitIncomingBroadcastReceiver : BroadcastReceiver() {
+open class CallkitIncomingBroadcastReceiver : BroadcastReceiver() {
 
     companion object {
         private const val TAG = "CallkitIncomingReceiver"
